@@ -1,0 +1,8 @@
+[
+    { "key":"ACTION_1", "test": "Open a chequing account" },
+    { "key":"ACTION_2", "test": "Open a savings account" },
+    { "key":"ACTION_3", "test": "Open a U.S. Dollar account" },
+    { "key":"ACTION_4", "test": "Review my everyday banking needs ......... .......... .......... .........." },
+    { "key":"ACTION_5", "test": "Switch to TD" },
+    { "key":"ACTION_6", "test": "Apply for Overdraft Protection" }
+]

@@ -1,0 +1,81 @@
+<style>
+    .btn-wrap {
+        white-space: normal;
+    }
+    .mb10 {
+        margin-bottom: 10px;
+    }
+
+    .p10 {
+        padding: 10px;
+    }
+
+    .ml15 {
+        margin-left: 15px;
+    }
+</style>
+
+<div class="container-fluid" ng-init="refreshActions()">
+    <!--Your code here, see desktop/tablet/mobile.png.-->
+    <br/>
+
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <h4>Switch Locale</h4>
+            <div class="btn-group" role="group" aria-label="...">
+                <button type="button" class="btn btn-default" ng-class="{active: locale=='en'}" ng-click="changeLocale('en')">English</button>
+                <button type="button" class="btn btn-default" ng-class="{active: locale=='fr'}" ng-click="changeLocale('fr')">French</button>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <h4>Num of Buttons</h4>
+            <div class="btn-group" role="group" aria-label="...">
+                <button type="button" class="btn btn-default" ng-class="{active: numActions==origActions.length}" ng-click="changeActionLength(origActions.length)">{{origActions.length}}</button>
+                <button type="button" class="btn btn-default" ng-class="{active: numActions==1}" ng-click="changeActionLength(1)">1</button>
+                <button type="button" class="btn btn-default" ng-class="{active: numActions==5}" ng-click="changeActionLength(5)">5</button>
+            </div>
+        </div>
+    </div>
+    <br/><br/>
+
+    <div class="row p10">
+
+        <h4 class="ml15">First Group</h4>
+
+        <!-- Display a centered button if there is only one -->
+        <div ng-if="actions.length==1">
+            <button class="btn btn-primary btn-lg center-block btn-wrap" translate="{{actions[0].key}}"/>
+        </div>
+
+         <!-- Display all buttons in the left column if there are exactly 5 -->
+        <div ng-if="actions.length==5">
+            <div class="row p10" style="margin-top: -10px;" ng-repeat="action in actions" equal-height-container equal-height-elem-class="equal-height">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <button class="btn btn-primary btn-block btn-wrap equal-height" translate="{{action.key}}"/>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"/>
+            </div>
+        </div>
+
+         <!-- Display in two columns if not 1 or 5 -->
+        <div ng-if="actions.length!=1 && actions.length!=5">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 mb10" ng-repeat="action in actions" equal-height-container="first-group" equal-height-elem-class="equal-height">
+                <button class="btn btn-primary btn-block btn-wrap equal-height" translate="{{action.key}}"/>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row p10">
+         <h4 class="ml15">Second Group <small>with different heights</small></h4>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 mb10" ng-repeat="action in actions" equal-height-container="second-group" equal-height-elem-class="equal-height">
+            <button class="btn btn-default btn-block btn-wrap equal-height">{{action.key | translate}}, appending randon strings so we can see the difference with different element groups</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <hr/>
+        </div>
+    </div>
+
+</div>
